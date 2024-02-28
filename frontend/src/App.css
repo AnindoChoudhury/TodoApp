@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+body{
+    margin : 0;
+    font-family: Roboto;
+    font-weight: 500;
+}
+p
+{
+    font-weight: 400;
+    margin : 0;
+}
+.statItems
+{
+    padding : 1.5rem 2rem 2rem 1rem;
+    display : flex; 
+    flex-direction: column;
+    justify-content: start;
+    margin : 0; 
+    border-radius: 10px;
+    background-color : pink;
+}
+.submitBtn:hover
+{
+    cursor : pointer; 
+}
