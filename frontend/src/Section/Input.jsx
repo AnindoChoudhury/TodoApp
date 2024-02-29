@@ -2,6 +2,8 @@ import React,{useState,useRef,useContext} from "react";
 import TodoContext from "../context/TodoContext";
 import "../App.css"
 import Stat from "./Stat";
+import { Button } from "@/components/ui/button"
+
 function Input()
 {
   const titleRef = useRef(null);
@@ -42,7 +44,7 @@ function Input()
     <div style={{display : "flex",width : "90%"}}>
     <input style={{
        width : "80%",
-       height : "2rem",
+       height : "100%",
        borderRadius : "10px 0 0 10px",
        fontFamily : "Roboto",
        backgroundColor : "white",
@@ -62,7 +64,10 @@ function Input()
   Submit</button>
   </div>
   <Stat/>
-    </div>
+
+
+ 
+  </div>
    )
 }
 

@@ -1,5 +1,5 @@
-import Input from "./Component/Input"
-import Display from "./Component/Display"
+import Input from "./Section/Input"
+import Display from "./Section/Display"
 import TodoContextProvider from "./context/TodoContextProvider"
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       <Display/>
       </TodoContextProvider>
     </div>
-  )
+  );
   
 }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import TodoContext from "../context/TodoContext";
+
 function Display() {
-  let ind;
   let [color, setColor] = useState([]);
   const [check, setCheck] = useState([false]);
   const { todoCon,setTodoCon,title,setTitle,setTotalNumberOfTodos} = useContext(TodoContext);
@@ -20,7 +20,7 @@ function Display() {
    {
     if(todoCon.length)
      {
-      setTitle("Your TODOS");
+      setTitle("Your list");
       setTotalNumberOfTodos(todoCon.length);
      }
    },[todoCon]);
@@ -30,31 +30,38 @@ function Display() {
         className="display"
         style={{
           display: "flex",
-          gap: "1rem",
           flexDirection: "column",
+          backgroundColor:"white",
           width: "100%",
-          paddingTop: "8%",
           alignItems: "center",
           height : "100vh",
           overflow: "auto",
           paddingBottom: "50px",
         }}
       >
-    <h2>{title}</h2>
-        {todoCon.map((item, i) => (
+    <h2 className="mt-10 scroll-m-20 pb-2 text-3xl self-start font-semibold tracking-tight transition-colors first:mt-0" style={{marginTop:"8%",marginLeft:"2rem"}}>{title}</h2>
+    <div className="displaychild" style={{display:"flex",justifyContent:"center",flexDirection:"column",alignItems:"center",width:"100%",marginTop : "2rem"}}>
+        {todoCon.map((item, i) => {
+          let todoItemBackgroundColor = i%2===0?"#ECB159":"#F0F3FF";
+
+          let borderRadiusOfItem = i===0? "10px 10px 0 0" : (i===todoCon.length-1)? "0 0 10px 10px" : "0 0 0 0";
+         
+          return(
           <div
             key={i}
             style={{
               width: "90%",
-              backgroundColor: color[i] || "white",
-              padding: "1rem",
-              borderRadius: "10px",
-              position: "relative",
+              backgroundColor:todoItemBackgroundColor,
+              borderRadius : borderRadiusOfItem,
+              padding : "15px",
+              // backgroundColor: color[i] || "red",
+              // padding: "1rem",
+              // borderRadius: "10px",
             }}
           >
-            <h2 style={{ marginBottom: "1rem" }}>{item.todoTitle}</h2>
-            <p style={{ display: "inline", marginRight: "1.5rem" }}>
-              Completed
+            <p className="leading-7 [&:not(:first-child)]:mt-6">{item.todoTitle}</p>
+            {/* <p style={{ display: "inline", marginRight: "1.5rem" }}>
+              Completed 
             </p>
             <input
               style={{
@@ -71,11 +78,12 @@ function Display() {
                   return newCheck;
                 });
               }}
-            />
+            /> */}
           </div>
-        ))}
+        )})}
+        </div>
       </div>
     );
-}
+};
 
 export default Display;
