@@ -5,13 +5,7 @@ const {Todos}=require("./Database/mongo");
 const app = express();
 const cors = require ("cors");
 app.use(express.json());
-app.use(cors(
-    {
-        origin : "*",
-        methods : ["POST","GET","PUT"],
-        credentials : true
-    }
-));
+app.use(cors());
 
 // signup logic 
 app.post("/signup",(req,res)=>

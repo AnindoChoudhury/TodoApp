@@ -3,20 +3,28 @@ import TodoContext from "../context/TodoContext";
 import "../App.css"
 import Stat from "./Stat";
 import { Button } from "@/components/ui/button"
-
+import Info from "@/SVG/info";
 function Input()
 {
   const titleRef = useRef(null);
-  const {setTodoCon,todoCon,title,setTitle,totalNumberOfTodos,setTotalNumberOfTodos} = useContext(TodoContext);
+  const {setTodoCon,todoCon,title,setTitle,totalNumberOfTodos,setTotalNumberOfTodos,checks,setChecks} = useContext(TodoContext);
  
   async function pushTodo()
   {
     const todoTitle = titleRef.current.value;
-    const todoObject = {todoTitle};
+    if(!todoTitle)
+    {
+       alert("At least enter some todo");
+       return; 
+    }
+    const todoObject = {id:todoCon.length,todoTitle:todoTitle,completed:false};
     setTodoCon((current)=>([...current,todoObject]));
     const reqBody = {
+      id : todoCon.length,
       title : todoTitle,
+      completed : false,
     }
+    console.log(todoObject);
     titleRef.current.value="";
     await fetch("https://todo-app-backend-delta.vercel.app/todo",{
       method : "POST",
@@ -35,13 +43,14 @@ function Input()
       gap: "1rem",
       flexDirection: "column",
       width: "100%",
-      paddingTop: "8%",
+      paddingTop: "7%",
       alignItems: "center",
       height : "100vh",
       overflow: "auto",
     }}
   >
-    <div style={{display : "flex",width : "90%"}}>
+    
+    <div style={{display : "flex",width : "90%",marginTop : "2.4rem"}}>
     <input style={{
        width : "80%",
        height : "100%",
@@ -68,6 +77,8 @@ function Input()
 
  
   </div>
+
+
    )
 }
 

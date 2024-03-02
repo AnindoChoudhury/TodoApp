@@ -1,31 +1,23 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext,useRef} from "react";
 import TodoContext from "../context/TodoContext";
-
+import { Checkbox } from "@/components/ui/checkbox"
 function Display() {
   let [color, setColor] = useState([]);
-  const [check, setCheck] = useState([false]);
-  const { todoCon,setTodoCon,title,setTitle,setTotalNumberOfTodos} = useContext(TodoContext);
+  // const [check, setCheck] = useState([false]);
+  const { todoCon,setTodoCon,check,title,setTitle,setCheck,setTotalNumberOfTodos} = useContext(TodoContext);
 
-  // Changes the color array based on the values of the check array
-  useEffect(() => {
-    setColor(
-      check.map((item) => {
-        if (item) return "#D4E7C5";
-        else return "white";
-      })
-    );
-    console.log(check);
-  }, [check]);
-   useEffect(()=>
-   {
+  useEffect(()=>
+  {
     if(todoCon.length)
-     {
-      setTitle("Your list");
+    {
+      setTitle("");
       setTotalNumberOfTodos(todoCon.length);
-     }
-   },[todoCon]);
+    }
+  },[todoCon]);
   // If there is at least a single todo in the todoCon array
-    return (
+ 
+  const checkRef = useRef(null);
+  return (
       <div
         className="display"
         style={{
@@ -40,7 +32,7 @@ function Display() {
         }}
       >
     <h2 className="mt-10 scroll-m-20 pb-2 text-3xl self-start font-semibold tracking-tight transition-colors first:mt-0" style={{marginTop:"8%",marginLeft:"2rem"}}>{title}</h2>
-    <div className="displaychild" style={{display:"flex",justifyContent:"center",flexDirection:"column",alignItems:"center",width:"100%",marginTop : "2rem"}}>
+    <div className="displaychild" style={{display:"flex",justifyContent:"center",flexDirection:"column",alignItems:"center",width:"100%",marginTop : "4.3rem"}}>
         {todoCon.map((item, i) => {
           let todoItemBackgroundColor = i%2===0?"#ECB159":"#F0F3FF";
 
@@ -53,32 +45,20 @@ function Display() {
               width: "90%",
               backgroundColor:todoItemBackgroundColor,
               borderRadius : borderRadiusOfItem,
-              padding : "15px",
+              padding : "20px",
               // backgroundColor: color[i] || "red",
               // padding: "1rem",
               // borderRadius: "10px",
             }}
           >
-            <p className="leading-7 [&:not(:first-child)]:mt-6">{item.todoTitle}</p>
-            {/* <p style={{ display: "inline", marginRight: "1.5rem" }}>
-              Completed 
-            </p>
-            <input
-              style={{
-                width: "20px",
-                height: "20px",
-                position: "absolute",
-                bottom: "15px",
-              }}
-              type="checkbox"
-              onChange={() => {
-                setCheck((prev) => {
-                  const newCheck = [...prev];
-                  newCheck[i] = !newCheck[i];
-                  return newCheck;
-                });
-              }}
-            /> */}
+            <div className="flex gap-6 items-center">
+            
+            <Checkbox ref = {checkRef} id={i}/>
+            <p className="leading-7">{item.todoTitle}</p>
+            
+            </div>
+
+           
           </div>
         )})}
         </div>
