@@ -3,12 +3,11 @@ import TodoContext from "../context/TodoContext";
 import "../App.css"
 import Stat from "./Stat";
 import { Button } from "@/components/ui/button"
-import Info from "@/SVG/info";
 function Input()
 {
   const titleRef = useRef(null);
-  const {setTodoCon,todoCon,title,setTitle,totalNumberOfTodos,setTotalNumberOfTodos,checks,setChecks} = useContext(TodoContext);
- 
+  const {setTodoCon,todoCon,setArraySelector,title,setTitle,totalNumberOfTodos,setTotalNumberOfTodos} = useContext(TodoContext);
+  
   async function pushTodo()
   {
     const todoTitle = titleRef.current.value;
@@ -37,7 +36,7 @@ function Input()
   
    return (
     <div
-    className="display"
+    className="input"
     style={{
       display: "flex",
       gap: "1rem",
