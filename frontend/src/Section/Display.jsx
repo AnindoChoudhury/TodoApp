@@ -19,18 +19,7 @@ function NoTodoHeading() {
 function Display() {
   let [color, setColor] = useState([]);
   // const [check, setCheck] = useState([false]);
-  const {
-    todoCon,
-    setTodoCon,
-    check,
-    title,
-    setTitle,
-    setCheck,
-    setTotalNumberOfTodos,
-    arraySelector,
-    setArraySelector,
-    totalNumberOfTodos,
-  } = useContext(TodoContext);
+  const { todoCon,setTodoCon,check,title,setTitle,setCheck,setTotalNumberOfTodos,arraySelector,setArraySelector,totalNumberOfTodos} = useContext(TodoContext);
 
   useEffect(() => {
     if (todoCon.length) {
@@ -72,36 +61,28 @@ function Display() {
         {arraySelector.map((item, i) => {
           let todoItemBackgroundColor = i % 2 === 0 ? "#ECB159" : "#F0F3FF";
 
-          let borderRadiusOfItem =
-            i === 0
-              ? "10px 10px 0 0"
-              : i === todoCon.length - 1
-              ? "0 0 10px 10px"
-              : "0 0 0 0";
+          let borderRadiusOfItem = i===0? "10px 10px 0 0" : (i===todoCon.length-1)? "0 0 10px 10px" : "0 0 0 0";
+         
+          return(
+          <div
+            key={i}
+            style={{
+              width: "90%",
+              backgroundColor:todoItemBackgroundColor,
+              borderRadius : borderRadiusOfItem,
+              padding : "20px",
 
-          return (
-            <div
-              key={i}
-              style={{
-                width: "90%",
-                backgroundColor: todoItemBackgroundColor,
-                borderRadius: borderRadiusOfItem,
-                padding: "20px",
-              }}
-            >
-              <div className="flex gap-6 items-center">
-                <Checkbox
-                  ref={checkRef}
-                  props={item}
-                />
-                <p className="leading-7">{item.todoTitle}</p>
-              </div>
+            }}
+          >
+            <div className="flex gap-6 items-center"> 
+            <Checkbox id={item.id} completed={item.completed}/>
+            <p className="leading-7">{item.todoTitle}</p>  
             </div>
-          );
-        })}
+          </div>
+        )})}
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+};
 
 export default Display;

@@ -12,8 +12,6 @@ export default function TopSection()
     const allRef = useRef(null);
     const clearCompletedRef = useRef(null);
     const clearAllRef = useRef(null);
-
-
     return(
         <>
         <div className={`flex flex-wrap w-100 flex-row items-center justify-center mt-[2.6rem] gap-1`}>
@@ -22,7 +20,7 @@ export default function TopSection()
             if(completedTodo.length)
             {
             setArraySelector([...completedTodo])
-            console.log(completedTodo)
+            
             }
             else 
             alert("No such");
