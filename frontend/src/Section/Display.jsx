@@ -61,10 +61,9 @@ function Display() {
         }}
       >
         {arraySelector.map((item, i) => {
-          let todoItemBackgroundColor = i % 2 === 0 ? "#ECB159" : "#F0F3FF";
-
+          let todoItemBackgroundColor = (item.completed)?"#C1F2B0":(i%2===0)?"#ECB159":"#F0F3FF";
           let borderRadiusOfItem = i===0? "10px 10px 0 0" : (i===todoCon.length-1)? "0 0 10px 10px" : "0 0 0 0";
-         
+          let border = (item.completed)?"1px solid black" : "none"; 
           return(
           <div
             key={i}
@@ -74,6 +73,7 @@ function Display() {
               borderRadius : borderRadiusOfItem,
               padding : "20px",
               display : "flex",
+              borderBottom :border,
               justifyContent : "space-between"
             }}
           >

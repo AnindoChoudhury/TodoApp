@@ -21,7 +21,7 @@ export default function TopSection()
             {
             setArraySelector([...completedTodo])
 
-            
+
             }
             else 
             alert("You have no completed todos");
