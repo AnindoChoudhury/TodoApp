@@ -5,7 +5,7 @@ import DropDown from "./DropDown";
 import {useContext} from "react"; 
 export default function TopSection()
 {
-    const {todoCon,title,setTitle,arraySelector,completedTodo,setCompletedTodo,setArraySelector,setTodoCon}=useContext(TodoContext);
+    const {todoCon,title,setTitle,arraySelector,completedTodo,setCompletedTodo,incompleteTodo,setIncompleteTodo,setArraySelector,setTodoCon}=useContext(TodoContext);
     const sortRef = useRef(null);
     const completedRef = useRef(null);
     const remainingRef = useRef(null);
@@ -20,12 +20,21 @@ export default function TopSection()
             if(completedTodo.length)
             {
             setArraySelector([...completedTodo])
-            
+
+
             }
             else 
-            alert("No such");
+            alert("You have no completed todos");
        }} ref={completedRef} >Show Completed</Button>
-       <Button className={`bg-white-500 ${title} text-black hover:bg-slate-300 text-s`} variant="secondary" ref={remainingRef}>Show Remaining</Button>
+       <Button className={`bg-white-500 ${title} text-black hover:bg-slate-300 text-s`} variant="secondary" clickHandler={
+        function()
+        {
+            if(incompleteTodo.length)
+            setArraySelector([...incompleteTodo]);
+            else  
+            alert("You don't have incomplete Todos")
+        }
+       } ref={remainingRef}>Show Remaining</Button>
        <Button className={`bg-white-500 ${title} text-black hover:bg-slate-300 text-s`}  variant="secondary" clickHandler={function()
        {
             setArraySelector([...todoCon])

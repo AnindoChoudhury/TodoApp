@@ -8,14 +8,17 @@ import { cn } from "@/lib/utils"
 import TodoContext from "@/context/TodoContext"
 
 const Checkbox = React.forwardRef(({ className, ...props }, ref) => {
-  const {todoCon,setTodoCon,completedTodo,setCompletedTodo}= useContext(TodoContext)
+  const {todoCon,setTodoCon,completedTodo,setCompletedTodo,incompleteTodo,setIncompleteTodo}= useContext(TodoContext)
   useEffect(function()
   {
     // Filters the completed tasks and puts them in completedTodo
     setCompletedTodo([...todoCon.filter((item)=>(item.completed))])
-
+      
   },[todoCon])
-
+ useEffect(function()
+ {
+  setIncompleteTodo([...todoCon.filter((item)=>(!item.completed))])
+ })
   return(
   <CheckboxPrimitive.Root
   // Toggles the property completed of the original todo list
