@@ -16,12 +16,13 @@ function Input()
        alert("At least enter some todo");
        return; 
     }
-    const todoObject = {id:todoCon.length,todoTitle:todoTitle,completed:false};
+    const todoObject = {id:todoCon.length,todoTitle:todoTitle,completed:false,priority : "high"};
     setTodoCon((current)=>([...current,todoObject]));
     const reqBody = {
       id : todoCon.length,
       title : todoTitle,
       completed : false,
+      priority : "high"
     }
     console.log(todoObject);
     titleRef.current.value="";

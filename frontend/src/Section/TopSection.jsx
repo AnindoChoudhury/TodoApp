@@ -21,7 +21,7 @@ export default function TopSection()
             {
             setArraySelector([...completedTodo])
 
-
+            
             }
             else 
             alert("You have no completed todos");
@@ -40,10 +40,26 @@ export default function TopSection()
             setArraySelector([...todoCon])
            
        }} ref={allRef} >Show All</Button>
-       <Button className={`bg-white-500 ${title} text-black hover:bg-slate-300 text-s`} variant="secondary" ref={clearCompletedRef}>Clear Completed</Button>
-   <Button className={`bg-white-500 ${title} text-black hover:bg-slate-300 text-s`}  variant="secondary" ref={clearAllRef}>Clear All</Button>
+       <Button className={`bg-white-500 ${title} text-black hover:bg-slate-300 text-s`} variant="secondary" clickHandler={
+        function()
+        {
+                if(completedTodo.length)
+                {
+                setTodoCon([...todoCon.filter((item)=>(!item.completed))])
+                setArraySelector(todoCon);
+                }
+                else 
+                alert("You don't have any completed Todos")
+        }
+       } ref={clearCompletedRef}>Clear Completed</Button>
+   <Button className={`bg-white-500 ${title} text-black hover:bg-slate-300 text-s`}  variant="secondary" clickHandler={
+    function(e)
+    {
+        setTodoCon([]);
+        setArraySelector(todoCon);
+    }
+   } ref={clearAllRef}>Clear All</Button>
    
-   <DropDown/>
    </div>
   </>
     )

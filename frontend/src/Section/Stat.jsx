@@ -27,7 +27,7 @@ function StatItems({text,color,number})
 
 export default function Stat()
 {
-    const {totalNumberOfTodos,completedTodo,setCompletedTodo}=useContext(TodoContext);
+    const {totalNumberOfTodos,completedTodo,setCompletedTodo,mediumPriority,highPriority,lowPriority}=useContext(TodoContext);
     return(
         <div style={{display : "flex",marginTop : "20px",height : "19rem",padding:"0 1rem 0 1rem",flexDirection:"column",width : "90%",justifyContent : "start",alignItems : "center"}}>
             <div style={{width : "100%"}}>
@@ -37,9 +37,9 @@ export default function Stat()
              <StatItems text="Remaining" color ="#FC6736" number={totalNumberOfTodos-completedTodo.length}/>
              <StatItems text="Complete" color ="#F8E559"
              number={completedTodo.length}/>
-            <StatItems  text="High Priority" color="#FF8080"/>
-            <StatItems text="Medium Priority" color="#FDBF60"/>
-            <StatItems text="Low Priority" color ="#F2C18D"/>
+            <StatItems  text="High Priority" number = {highPriority.length} color="#FF8080"/>
+            <StatItems text="Medium Priority" number={mediumPriority.length} color="#FDBF60"/>
+            <StatItems text="Low Priority" number={lowPriority.length} color ="#F2C18D"/>
 
             </div>
             </div>

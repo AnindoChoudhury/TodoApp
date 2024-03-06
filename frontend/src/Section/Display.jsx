@@ -3,6 +3,7 @@ import TodoContext from "../context/TodoContext";
 import { Button } from "@/components/ui/button";
 import TopSection from "./TopSection";
 import { Checkbox } from "@/components/ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 // import {Checkbox} from "@/components/custom-components/Checkbox";
 function NoTodoHeading() {
   const { title, setTitle } = useContext(TodoContext);
@@ -32,6 +33,7 @@ function Display() {
   // If there is at least a single todo in the todoCon array
 
   const checkRef = useRef(null);
+ 
   return (
     <div
       className="display"
@@ -71,12 +73,33 @@ function Display() {
               backgroundColor:todoItemBackgroundColor,
               borderRadius : borderRadiusOfItem,
               padding : "20px",
-
+              display : "flex",
+              justifyContent : "space-between"
             }}
           >
-            <div className="flex gap-6 items-center"> 
+            <div className="flex gap-4 items-center" style={{width : "90%"}}> 
             <Checkbox id={item.id} completed={item.completed}/>
-            <p className="leading-7">{item.todoTitle}</p>  
+            <p className="leading-7" style={{width :"90%"}}>{item.todoTitle}</p>  
+            </div>
+            <div className="flex gap-2 items-center flex-col">
+              <div className="flex gap-3 justify-evenly items-center">
+                <p className="text-xs">H</p>
+                <p className="text-xs">M</p>
+                <p  className="text-xs">L</p>
+              </div>
+              <div>
+              <RadioGroup className="flex" defaultValue="option-one">
+                  <div className="flex items-center space-x-2">
+                     <RadioGroupItem value="option-one" priority="high" id={item.id} />
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="option-two" priority="medium" id={item.id} />
+                  </div>
+                  <div className="flex items-center space-x-2">
+                     <RadioGroupItem value="option-three" priority="low" id={item.id} />
+                  </div>
+              </RadioGroup>
+              </div>
             </div>
           </div>
         )})}
