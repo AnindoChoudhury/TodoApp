@@ -57,7 +57,7 @@ function Display() {
           flexDirection: "column",
           alignItems: "center",
           width: "100%",
-          marginTop: "2.8rem",
+          marginTop: "0.6rem",
         }}
       >
         {arraySelector.map((item, i) => {
@@ -77,9 +77,9 @@ function Display() {
               justifyContent : "space-between"
             }}
           >
-            <div className="flex gap-4 items-center" style={{width : "90%"}}> 
+            <div className="flex gap-4 items-center w-[90%]"> 
             <Checkbox id={item.id} completed={item.completed}/>
-            <p className="leading-7" style={{width :"90%"}}>{item.todoTitle}</p>  
+            <p className="leading-7 max-w-[70%] break-words">{item.todoTitle}</p>  
             </div>
             <div className="flex gap-2 items-center flex-col">
               <div className="flex gap-3 justify-evenly items-center">

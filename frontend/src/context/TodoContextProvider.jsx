@@ -15,10 +15,12 @@ const TodoContextProvider = ({children})=>
         const [priority,setPriority]=useState(null)
         const [priorityColor,setPriorityColor]=useState("");
         const [arraySelector, setArraySelector]=useState(todoCon);
+        const [completedBtnClicked,setCompletedBtnClicked]=useState(false);
+        const [remainingBtnClicked,setRemainingBtnClicked]=useState(false);
         const [check,setCheck] = useState(false); 
         const [showSortDialogBox,setShowSortDialogBox]=useState("hidden");
         return (
-            <TodoContext.Provider value = {{todoCon,setTodoCon,arraySelector,checkedStatus,setShowSortDialogBox,setCheckedStatus,totalNumberOfTodos,setCheck,setPriorityColor,setTotalNumberOfTodos,completedTodo,priority,setCompletedTodo,showSortDialogBox,incompleteTodo,title,priorityColor,setTitle,setIncompleteTodo,setPriority,check,setArraySelector,highPriority,setHighPriority,lowPriority,mediumPriority,setLowPriority,setMediumPriority}}>
+            <TodoContext.Provider value = {{todoCon,setTodoCon,arraySelector,checkedStatus,setShowSortDialogBox,setCheckedStatus,totalNumberOfTodos,setCheck,setPriorityColor,setTotalNumberOfTodos,completedTodo,priority,setCompletedTodo,showSortDialogBox,completedBtnClicked,setCompletedBtnClicked,incompleteTodo,title,priorityColor,setTitle,setIncompleteTodo,setPriority,check,setArraySelector,highPriority,setHighPriority,lowPriority,mediumPriority,remainingBtnClicked,setRemainingBtnClicked,setLowPriority,setMediumPriority}}>
                 {children}
             </TodoContext.Provider>
         )
