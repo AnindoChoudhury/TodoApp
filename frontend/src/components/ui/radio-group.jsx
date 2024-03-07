@@ -15,22 +15,27 @@ RadioGroup.displayName = RadioGroupPrimitive.Root.displayName
 
 const RadioGroupItem = React.forwardRef(({ className, ...props }, ref) => {
  
-  const {todoCon,mediumPriority,setTodoCon,setMediumPriority,setLowPriority,setHighPriority} = useContext(TodoContext)
+  const {todoCon,mediumPriority,setTodoCon,arraySelector,setArraySelector,setMediumPriority,setLowPriority,setHighPriority} = useContext(TodoContext)
+  // With change in priority, the arraySelector also changes, and therefore the arraySelector is checked and 
+  // kept inside the respective arrays
   React.useEffect(function()
   {
-    setMediumPriority([...todoCon.filter((item)=>(item.priority==="medium"))]);
-    setLowPriority([...todoCon.filter((item)=>(item.priority==="low"))]);
-    setHighPriority([...todoCon.filter((item)=>(item.priority==="high"))]);
-  },[todoCon])
+    setMediumPriority([...arraySelector.filter((item)=>(item.priority==="medium"))]);
+    setLowPriority([...arraySelector.filter((item)=>(item.priority==="low"))]);
+    setHighPriority([...arraySelector.filter((item)=>(item.priority==="high"))]);
+  },[arraySelector])
   React.useEffect(function()
   {
     console.log(mediumPriority);
   },[mediumPriority])
   return (
     (<RadioGroupPrimitive.Item
-      onClick={function()
+    // On clicking a radio button, a new array is created with the priority set to the priority of the clicked
+    // radio button. Then the new array is set to arraySelector
+      onClick={function(e)
       {
-          setTodoCon(...[todoCon.map((item)=>{
+          console.log(e); 
+          setArraySelector(...[arraySelector.map((item)=>{
             if(props.id===item.id)
             {
               item.priority=props.priority; 
@@ -39,6 +44,8 @@ const RadioGroupItem = React.forwardRef(({ className, ...props }, ref) => {
           })])
       }}
       ref={ref}
+      // The radio gets selected whose priority matches with the todo priority
+      checked = {props.itemPriority===props.priority}
       className={cn(
         "aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
         className

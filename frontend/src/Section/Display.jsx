@@ -88,15 +88,15 @@ function Display() {
                 <p  className="text-xs">L</p>
               </div>
               <div>
-              <RadioGroup className="flex" defaultValue="option-one">
+         <RadioGroup className="flex" defaultValue="high">
                   <div className="flex items-center space-x-2">
-                     <RadioGroupItem value="option-one" priority="high" id={item.id} />
+                     <RadioGroupItem value="high" priority="high" id={item.id} itemPriority={item.priority}/>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="option-two" priority="medium" id={item.id} />
+                    <RadioGroupItem value="medium" priority="medium" id={item.id} itemPriority={item.priority} />
                   </div>
                   <div className="flex items-center space-x-2">
-                     <RadioGroupItem value="option-three" priority="low" id={item.id} />
+                     <RadioGroupItem value="low" priority="low" id={item.id} itemPriority={item.priority} />
                   </div>
               </RadioGroup>
               </div>

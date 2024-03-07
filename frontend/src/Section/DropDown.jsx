@@ -3,11 +3,17 @@ import { useContext } from "react"
 import TodoContext from "@/context/TodoContext"
 export default function DropDown({className})
 {
-    const {showSortDialogBox,setCompletedBtnClicked,setShowSortDialogBox,setRemainingBtnClicked,arraySelector,setArraySelector}=useContext(TodoContext)
+    const {mediumPriority,lowPriority,highPriority,showSortDialogBox,setCompletedBtnClicked,setShowSortDialogBox,setRemainingBtnClicked,arraySelector,setArraySelector}=useContext(TodoContext)
+    // The array selector gets set to highPriority, mediumPriority, lowPriority
     function priorityHandler()
     {
-      console.log(arraySelector)
+     
+      // console.log("hp",highPriority);
+      // console.log("mp",mediumPriority);
+      // console.log("lp",lowPriority);
+      setArraySelector([...(highPriority.concat(mediumPriority).concat(lowPriority))])
     }
+
     function dateHandler()
     {
       //  setCompletedBtnClicked(false)
