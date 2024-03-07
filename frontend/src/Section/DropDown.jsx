@@ -7,17 +7,13 @@ export default function DropDown({className})
     // The array selector gets set to highPriority, mediumPriority, lowPriority
     function priorityHandler()
     {
-     
-      // console.log("hp",highPriority);
-      // console.log("mp",mediumPriority);
-      // console.log("lp",lowPriority);
+   
       setArraySelector([...(highPriority.concat(mediumPriority).concat(lowPriority))])
     }
 
     function dateHandler()
     {
-      //  setCompletedBtnClicked(false)
-      //  setRemainingBtnClicked(false);
+    
        setArraySelector([...arraySelector.reverse()])
     }
     return(
