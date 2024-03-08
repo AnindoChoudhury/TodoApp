@@ -26,7 +26,7 @@ function Input()
     }
     console.log(todoObject);
     titleRef.current.value="";
-    await fetch("https://todo-app-backend-delta.vercel.app/todo",{
+    await fetch("https://todo-app-nu-neon-64.vercel.app/",{
       method : "POST",
       body : JSON.stringify(reqBody),
       headers : {
