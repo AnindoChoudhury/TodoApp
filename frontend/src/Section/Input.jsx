@@ -25,13 +25,7 @@ function Input()
     }
     console.log(todoObject);
     titleRef.current.value="";
-    // await fetch("https://todo-app-nu-neon-64.vercel.app/",{
-    //   method : "POST",
-    //   body : JSON.stringify(reqBody),
-    //   headers : {
-    //      "Content-type" : "application/json"
-    //   }
-    // })
+   
   }
   
    return (
