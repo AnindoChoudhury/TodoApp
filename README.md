@@ -59,3 +59,7 @@ This project is built using the following technologies:
    ```bash
    git clone https://github.com/AnindoChoudhury/TodoApp.git
    ```
+2. Run the project
+   ```bash
+   npm run dev
+   ```
