@@ -13,9 +13,10 @@ mongoose.connect(`${process.env.MongoURL}`).then(()=>
 
 const todoSchema = new mongoose.Schema (
     {
+        id : Number,
         title : String,
-        description : String, 
         completed : Boolean,
+        priority : String
     }
 )
 

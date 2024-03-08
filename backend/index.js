@@ -8,15 +8,15 @@ app.use(express.json());
 app.use(cors());
 
 // signup logic 
-app.post("/signup",(req,res)=>
-{
+// app.post("/signup",(req,res)=>
+// {
     
-})
-//login logic 
-app.post("/login",(req,res)=>
-{
+// })
+// //login logic 
+// app.post("/login",(req,res)=>
+// {
     
-}) 
+// }) 
 // create todo logic 
 app.post("/todo",async (req,res)=>
 {
@@ -70,13 +70,13 @@ app.put("/todo",async (req,res)=>
    }
 })
 // delete todo logic
-app.delete("/todo",(req,res)=>
-{
+// app.delete("/todo",(req,res)=>
+// {
     
-})
+// })
 
 
-app.listen(process.env.PORT,()=>
-{
-console.log("Server running");
-})
+// app.listen(process.env.PORT,()=>
+// {
+// console.log("Server running");
+// })
