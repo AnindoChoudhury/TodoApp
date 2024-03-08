@@ -23,15 +23,19 @@ app.post("/todo",async (req,res)=>
     if(createTodo.safeParse(req.body).success)
     {
         const title = req.body.title;
-        const description = req.body.description;
-       await Todos.create({title,description});
+        const id = req.body.id;
+        const completed = req.body.completed;
+        const priority = req.body.priority;
+       await Todos.create({id,title,completed,priority});
        res.status(200).json({msg : "Todo Added"});
     }
     else 
     {
         res.status(411).json({
             title : req.body.title,
-            des : req.body.description
+            id : req.body.id,
+            completed : req.body.completed,
+            priority : req.body.priority
         })
     }
 })
@@ -53,7 +57,6 @@ app.put("/todo",async (req,res)=>
    {
         const id = req.body.id; 
         const title = req.body.title; 
-        const description = req.body.description ; 
         try{
         const todo = await Todos.findById(id);
         await Todos.updateOne({_id : id},{completed : true});

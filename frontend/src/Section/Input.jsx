@@ -7,7 +7,7 @@ function Input()
   const titleRef = useRef(null);
   const {setTodoCon,todoCon,setArraySelector,title,setTitle,totalNumberOfTodos,setTotalNumberOfTodos} = useContext(TodoContext);
   
-  async function pushTodo()
+   function pushTodo()
   {
     const todoTitle = titleRef.current.value;
     if(!todoTitle)
@@ -25,13 +25,13 @@ function Input()
     }
     console.log(todoObject);
     titleRef.current.value="";
-    await fetch("https://todo-app-nu-neon-64.vercel.app/",{
-      method : "POST",
-      body : JSON.stringify(reqBody),
-      headers : {
-         "Content-type" : "application/json"
-      }
-    })
+    // await fetch("https://todo-app-nu-neon-64.vercel.app/",{
+    //   method : "POST",
+    //   body : JSON.stringify(reqBody),
+    //   headers : {
+    //      "Content-type" : "application/json"
+    //   }
+    // })
   }
   
    return (

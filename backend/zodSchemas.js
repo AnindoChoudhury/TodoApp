@@ -2,8 +2,10 @@ const zod = require("zod");
 
 const createTodo = zod.object(
     {
+        id : zod.string(),
         title : zod.string(),
-        description : zod.string()
+        completed : zod.boolean(),
+        priority : zod.string()
     }
 );
 
